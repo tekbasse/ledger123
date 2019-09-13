@@ -1,0 +1,180 @@
+dir: ledger123
+
+Agenda:
+make a table cooresponding table and field names between ledger123 and accounts-* packages. NO, just ledger123 tables to accounts-* tables.. and note all differences in the accounts-*-create.sql files (and any other porting notes).
+
+
+admin.pl (to administer db and user permissions etc.)
+setup.pl (to setup system)
+In /ledger123 (different than ./bin/mozilla/.), following have exact same code, and pull in the name of the file as a means to differentiate:
+   131 admin.pl
+   131 login.pl
+   234 am.pl
+   234 ap.pl
+   234 ar.pl
+   234 bp.pl
+   234 ca.pl
+   234 cp.pl
+   234 ct.pl
+   234 gl.pl
+   234 hr.pl
+   234 ic.pl
+   234 im.pl
+   234 ir.pl
+   234 is.pl
+   234 jc.pl
+   234 menu.pl
+   234 oe.pl
+   234 pe.pl
+   234 ps.pl
+   234 rc.pl
+   234 reports.pl
+   234 rp.pl
+   234 trf.pl
+   234 vr.pl
+   552 setup.pl
+
+sql -- contains setup for database
+SL -- contains business code and SQL queries
+bin -- contains code that sets defaults that get passed to SL lib/modules
+
+(At least for /bin/mozilla)
+
+AM = Admin module, chart of accounts, template routines, preferences
+aa = AP / AR common routines
+am = administration
+ap = Accounts Payable
+ar = Accounts Receivable
+arap = common routines for gl, ar, ap, is, ir, oe
+arapprn = printing routines for ar, ap
+bp = Batch Printing
+ca = Chart of Accounts, Income Statement, Balance Sheet, search and edit transactions posted by the GL, AR, and AP
+CP = Check and receipt printing payment module
+ct = customers/vendors
+Form = form utilities
+gl = general ledger
+hr = Payroll and Human Resources
+ic = inventory control
+Inifile = utils to get win.ini style files
+im = import/export
+io = custom routines used in is, ir, oe
+ir = inventory receivable / received
+is = inventory invoicing module
+jc = job costing module
+lib = api library
+login = login/logout frontend, db api setup
+Mailer = email utilities 
+menu = menu, two frame layout with refactored menu
+mylib = export to xls, to csv,
+Num2text = routine for check writing
+oe = Order Entry, Quotation module
+OP = Opverpayment utils used in AR,AP,IS,IR,OE,CP
+pe = project / job administration
+pe = project/job, partsgroup admininstration, and translation maintenance
+pos = Point of Sale POS
+ps = POS script
+pw = password routines
+rc = account reconciliation module
+reports.pl = inventoy onhand qty and value by based on FIFO
+rp = reports, prepare Income Statement and Balance Sheet
+trf = transfer inventory utils
+user = user related functions
+vr = voucher/batch register and processing setup
+ir = inventory receivable / received
+is = inventory invoicing module
+io = custom routines used in is, ir, oe
+
+
+
+
+Divided by OpenACS package
+
+accounts-contacts
+ct = customers/vendors
+
+accounts-desk
+bp = Batch Printing
+vr = voucher/batch register and processing setup
+
+
+accounts-finance
+jc = job costing module
+
+accounts-payroll
+hr = Payroll and Human Resources
+
+accounts-ledger
+gl = general ledger
+AM = Admin module, chart of accounts, template routines, preferences
+aa = AP / AR common routines
+am = administration
+arap = common routines for gl, ar, ap, is, ir, oe
+araprn = printing routines for ar, ap
+ca = Chart of Accounts, Income Statement, Balance Sheet, search and edit transactions posted by the GL, AR, and AP
+CP = Check and receipt printing payment module
+Num2text = routine for check writing
+oe = Order Entry, Quotation module
+OP = Overpayment utils used in AR,AP,IS,IR,OE,CP
+pe = project / job administration
+pe = project/job, partsgroup admininstration, and translation maintenance
+rc = account reconciliation module
+reports.pl = inventoy onhand qty and value by based on FIFO
+rp = reports, prepare Income Statement and Balance Sheet
+
+
+accounts-pos
+pos = Point of Sale POS
+ps = POS script
+
+
+accounts-payables
+ap = Accounts Payable
+
+accounts-receivables
+ar = Accounts Receivable
+
+affiliates
+
+
+contact-support
+
+
+online-catalog
+
+
+inventory-control
+ic = inventory control
+trf = transfer inventory utils
+
+q-control
+
+
+q-data-types
+
+
+q-forms
+Form = form utilities
+
+q-tables
+im = import/export
+mylib = export to xls, to csv,
+
+
+q-wiki
+
+
+spreadsheet
+
+futil
+Inifile = utils to get win.ini style files
+
+
+openacs
+login = login/logout frontend, db api setup
+Mailer = email utilities 
+menu = menu, two frame layout with refactored menu
+lib = api library
+pw = password routines
+user = user related functions
+
+
