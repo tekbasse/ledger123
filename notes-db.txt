@@ -1,0 +1,135 @@
+accounts-contacts/accounts-contacts-create.sql:qal_address
+accounts-contacts/accounts-contacts-create.sql:qal_contact
+accounts-contacts/accounts-contacts-create.sql:qal_contact_object_id_map
+accounts-contacts/accounts-contacts-create.sql:qal_contact_user_map
+accounts-contacts/accounts-contacts-create.sql:qal_other_address_map
+accounts-finance/accounts-finance-create.sql:qaf_case
+accounts-finance/accounts-finance-create.sql:qaf_case_log
+accounts-finance/accounts-finance-create.sql:qaf_file
+accounts-finance/accounts-finance-create.sql:qaf_initial_conditions
+accounts-finance/accounts-finance-create.sql:qaf_log
+accounts-finance/accounts-finance-create.sql:qaf_log_points
+accounts-finance/accounts-finance-create.sql:qaf_model
+accounts-finance/accounts-finance-create.sql:qaf_post_calc_log
+accounts-finance/accounts-finance-create.sql:qaf_post_calcs
+accounts-finance/accounts-finance-create.sql:qaf_process_log
+accounts-finance/accounts-finance-create.sql:qaf_process_log_viewed
+accounts-finance/accounts-finance-create.sql:qaf_sched_proc_args
+accounts-finance/accounts-finance-create.sql:qaf_sched_proc_stack
+accounts-ledger/accounts-ledger-create.sql:qal_acc_trans
+accounts-ledger/accounts-ledger-create.sql:qal_chart
+accounts-ledger/accounts-ledger-create.sql:qal_chart_templates
+accounts-ledger/accounts-ledger-create.sql:qal_defaults
+accounts-ledger/accounts-ledger-create.sql:qal_department
+accounts-ledger/accounts-ledger-create.sql:qal_dept_trans_map
+accounts-ledger/accounts-ledger-create.sql:qal_discounts
+accounts-ledger/accounts-ledger-create.sql:qal_exchangerate
+accounts-ledger/accounts-ledger-create.sql:qal_gl
+accounts-ledger/accounts-ledger-create.sql:qal_language
+accounts-ledger/accounts-ledger-create.sql:qal_status
+accounts-ledger/accounts-ledger-create.sql:qal_tax
+accounts-ledger/accounts-ledger-create.sql:qal_template_accounts
+accounts-ledger/accounts-ledger-create.sql:qal_template_defaults
+accounts-ledger/accounts-ledger-create.sql:qal_template_taxes
+accounts-ledger/accounts-ledger-create.sql:qal_translation
+accounts-ledger/accounts-ledger-create.sql:qal_yearend
+accounts-ledger/entities-channels-create.sql:qal_customer
+accounts-ledger/entities-channels-create.sql:qal_customer_object_id_map
+accounts-ledger/entities-channels-create.sql:qal_customer_tax
+accounts-ledger/entities-channels-create.sql:qal_sic
+accounts-ledger/entities-channels-create.sql:qal_vendor
+accounts-ledger/entities-channels-create.sql:qal_vendor_object_id_map
+accounts-ledger/entities-channels-create.sql:qal_vendor_tax
+accounts-ledger/projects-manager-create.sql:qal_project
+accounts-payables/accounts-payables-create.sql:qap_ap
+accounts-receivables/accounts-receivables-create.sql:qar_ar
+accounts-receivables/accounts-receivables-create.sql:qar_ec_creditcards
+accounts-receivables/accounts-receivables-create.sql:qar_invoice
+accounts-receivables/accounts-receivables-create.sql:qar_oe
+accounts-receivables/accounts-receivables-create.sql:qar_orderitems
+accounts-receivables/accounts-receivables-create.sql:qar_recurring
+accounts-receivables/accounts-receivables-create.sql:qar_recurringemail
+accounts-receivables/accounts-receivables-create.sql:qar_recurringprint
+inventory-control/inventory-control-create.sql: qci_announcements
+inventory-control/inventory-control-create.sql: qci_attribute_choices
+inventory-control/inventory-control-create.sql: qci_attributes
+inventory-control/inventory-control-create.sql: qci_ec_product_links_map
+inventory-control/inventory-control-create.sql: qci_ec_product_purchase_comb
+inventory-control/inventory-control-create.sql: qci_ec_sale_prices
+inventory-control/inventory-control-create.sql: qci_inventory
+inventory-control/inventory-control-create.sql: qci_part_attributes_map
+inventory-control/inventory-control-create.sql: qci_parts
+inventory-control/inventory-control-create.sql: qci_partscustomer
+inventory-control/inventory-control-create.sql: qci_partsgroup
+inventory-control/inventory-control-create.sql: qci_partstax
+inventory-control/inventory-control-create.sql: qci_pricegroup
+inventory-control/inventory-control-create.sql: qci_product_series_map
+inventory-control/inventory-control-create.sql: qci_series
+inventory-control/inventory-control-create.sql: qci_shipping_details
+inventory-control/inventory-control-create.sql: qci_warehouse
+online-catalog/online-catalog-create.sql ecca_ec_templates
+online-catalog/online-catalog-create.sql ecca_ec_templates_audit
+shipping-tracking/shipping-tracking-create.sql ecst_shipments
+shipping-tracking/shipping-tracking-create.sql ecst_shipments_audit
+shipping-tracking/shipping-tracking-create.sql ecst_shiptod
+ledger123/sql/Pg-custom_tables.sql:trf
+ledger123/sql/Pg-custom_tables.sql:fifo
+ledger123/sql/Pg-custom_tables.sql:invoicetax
+ledger123/sql/Pg-custom_tables.sql:build
+ledger123/sql/Pg-custom_tables.sql:customercart
+ledger123/sql/Pg-custom_tables.sql:customerlogin
+ledger123/sql/Pg-custom_tables.sql:partsattr
+ledger123/sql/Pg-tables.sql:makemodel
+ledger123/sql/Pg-tables.sql:gl
+ledger123/sql/Pg-tables.sql:chart
+ledger123/sql/Pg-tables.sql:gifi
+ledger123/sql/Pg-tables.sql:defaults
+ledger123/sql/Pg-tables.sql:acc_trans
+ledger123/sql/Pg-tables.sql:invoice
+ledger123/sql/Pg-tables.sql:customer
+ledger123/sql/Pg-tables.sql:parts
+ledger123/sql/Pg-tables.sql:assembly
+ledger123/sql/Pg-tables.sql:ar
+ledger123/sql/Pg-tables.sql:ap
+ledger123/sql/Pg-tables.sql:partstax
+ledger123/sql/Pg-tables.sql:tax
+ledger123/sql/Pg-tables.sql:customertax
+ledger123/sql/Pg-tables.sql:vendortax
+ledger123/sql/Pg-tables.sql:oe
+ledger123/sql/Pg-tables.sql:orderitems
+ledger123/sql/Pg-tables.sql:exchangerate
+ledger123/sql/Pg-tables.sql:employee
+ledger123/sql/Pg-tables.sql:shipto
+ledger123/sql/Pg-tables.sql:vendor
+ledger123/sql/Pg-tables.sql:project
+ledger123/sql/Pg-tables.sql:partsgroup
+ledger123/sql/Pg-tables.sql:status
+ledger123/sql/Pg-tables.sql:department
+ledger123/sql/Pg-tables.sql:dpt_trans
+ledger123/sql/Pg-tables.sql:business
+ledger123/sql/Pg-tables.sql:sic
+ledger123/sql/Pg-tables.sql:warehouse
+ledger123/sql/Pg-tables.sql:inventory
+ledger123/sql/Pg-tables.sql:yearend
+ledger123/sql/Pg-tables.sql:partsvendor
+ledger123/sql/Pg-tables.sql:pricegroup
+ledger123/sql/Pg-tables.sql:partscustomer
+ledger123/sql/Pg-tables.sql:language
+ledger123/sql/Pg-tables.sql:audittrail
+ledger123/sql/Pg-tables.sql:translation
+ledger123/sql/Pg-tables.sql:recurring
+ledger123/sql/Pg-tables.sql:recurringemail
+ledger123/sql/Pg-tables.sql:recurringprint
+ledger123/sql/Pg-tables.sql:jcitems
+ledger123/sql/Pg-tables.sql:cargo
+ledger123/sql/Pg-tables.sql:br
+ledger123/sql/Pg-tables.sql:vr
+ledger123/sql/Pg-tables.sql:semaphore
+ledger123/sql/Pg-tables.sql:address
+ledger123/sql/Pg-tables.sql:contact
+ledger123/sql/Pg-tables.sql:paymentmethod
+ledger123/sql/Pg-tables.sql:bank
+ledger123/sql/Pg-tables.sql:payment
+ledger123/sql/Pg-tables.sql:curr
+ledger123/sql/Pg-tables.sql:report
+ledger123/sql/Pg-tables.sql:reportvars

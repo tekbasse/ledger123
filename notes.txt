@@ -1,12 +1,26 @@
 dir: ledger123
 
+Install Libreoffice Calc for knowledgebase mapping of porting.
+
 Agenda:
-make a table cooresponding table and field names between ledger123 and accounts-* packages. NO, just ledger123 tables to accounts-* tables.. and note all differences in the accounts-*-create.sql files (and any other porting notes).
+make a map of cooresponding table and field names between ledger123 and accounts-* packages. NO, just ledger123 tables to accounts-* tables.. and note all differences in the accounts-*-create.sql files (and any other porting notes).
+transfer queries to .xql files as is (ie use asterisk if there, then later, convert asterisks to explicit field names --to save time, to accelerate to alpha s
+tage.[DONE]
+make a map of SL subroutines (sub sub_name) to file, as some names are shared in different files..
+Do subroutines that share same name have same code in each case? Or different?
+
+
+?Make a tcl proc, qal_left_join, qal_right_join, qal_inner_join, blah blah, that takes two lists, each containing fieldnames, and combines accordingly.. in order to convert sql queries to dynamically generated ones by tcl using the package table definitions (for consistency and maintainability?) Maybe not.. could reduce security.
+
+work on accounts-ledger focused items first.
+ Any queries with shared AR go in AR.
+ Any queries with shared AP go in AP
+ Any queries with shared AP/AR go in accounts-ledger
 
 
 admin.pl (to administer db and user permissions etc.)
 setup.pl (to setup system)
-In /ledger123 (different than ./bin/mozilla/.), following have exact same code, and pull in the name of the file as a means to differentiate:
+In /ledger123 (different than ./bin/mozilla/.), following have EXACT SAME code --no execptions--, and pull in the name of the file as a means to differentiate:
    131 admin.pl
    131 login.pl
    234 am.pl
@@ -36,7 +50,7 @@ In /ledger123 (different than ./bin/mozilla/.), following have exact same code, 
 
 sql -- contains setup for database
 SL -- contains business code and SQL queries
-bin -- contains code that sets defaults that get passed to SL lib/modules
+bin -- contains code that sets defaults that get passed to SL library(api,modules)
 
 (At least for /bin/mozilla)
 
