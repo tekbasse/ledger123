@@ -14,6 +14,9 @@
 # turn execute the same script in bin/$terminal/
 #
 #######################################################################
+BEGIN {
+     push @INC, '.';
+}
 
 # setup defaults, DO NOT CHANGE
 $userspath = "users";

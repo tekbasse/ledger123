@@ -25,6 +25,9 @@ $sendmail = "| /usr/sbin/sendmail -t";
 $latex = 0;
 %printer = ();
 ########## end ###########################################
+ BEGIN {
+     push @INC, '.';
+ }
 
 
 $| = 1;

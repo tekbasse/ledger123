@@ -14,6 +14,9 @@
 # admin.pl is linked to this script
 #
 #######################################################################
+BEGIN {
+     push @INC, '.';
+}
 
 
 # setup defaults, DO NOT CHANGE
@@ -25,6 +28,9 @@ $memberfile = "users/members";
 $sendmail = "| /usr/sbin/sendmail -t";
 %printer = ();
 ########## end ###########################################
+ BEGIN {
+     push @INC, '.';
+ }
 
 
 $| = 1;
