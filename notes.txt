@@ -1,11 +1,18 @@
+/usr/bin/perl -x # ignore warnings
+/usr/bin/perl -w # show all warnings
+/usr/bin/perl -d:Trace # trace
+
 dir: ledger123
 
 Install Libreoffice Calc for knowledgebase mapping of porting.
 
 Agenda:
-make a map of cooresponding table and field names between ledger123 and accounts-* packages. NO, just ledger123 tables to accounts-* tables.. and note all differences in the accounts-*-create.sql files (and any other porting notes).
-transfer queries to .xql files as is (ie use asterisk if there, then later, convert asterisks to explicit field names --to save time, to accelerate to alpha s
-tage.[DONE]
+make a map of cooresponding table and field names between ledger123 and accounts-* packages. NO, just ledger123 tables to accounts-* tables.. and
+
+note all differences in the accounts-*-create.sql files (and any other porting notes).
+
+transfer queries to .xql files as is (ie use asterisk if there, then later, convert asterisks to explicit field names --to save time, to accelerate to alpha stage.[DONE]
+
 make a map of SL subroutines (sub sub_name) to file, as some names are shared in different files..
 Do subroutines that share same name have same code in each case? Or different?
 
