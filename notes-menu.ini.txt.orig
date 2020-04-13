@@ -234,7 +234,7 @@ type=check
 
 
 
-[Cash--Foreign Exchange (FX) Adjustment]
+[Cash--FX Adjustment]
 module=gl.pl
 action=add
 fxadj=1
@@ -1020,9 +1020,6 @@ action=search_exchangerates
 
 
 
-These are to be handled in accounts-ledger/admin:
-
-
 
 [Import]
 module=menu.pl
@@ -1116,6 +1113,7 @@ submenu=1
 module=im.pl
 action=export
 type=payment
+
 
 
 #[Export--CSV]
@@ -1305,8 +1303,272 @@ action=add_sic
 module=am.pl
 action=list_sic
 
+[System--HTML Templates]
+module=menu.pl
+action=acc_menu
+target=acc_menu
+submenu=1
 
+[System--HTML Templates--Income Statement]
+module=am.pl
+action=list_templates
+file=templates=/income_statement.html
 
+[System--HTML Templates--Balance Sheet]
+module=am.pl
+action=list_templates
+file=templates=/balance_sheet.html
+
+[System--HTML Templates--Sales Invoice]
+module=am.pl
+action=list_templates
+file=templates=/invoice.html
+
+[System--HTML Templates--Credit Invoice]
+module=am.pl
+action=list_templates
+file=templates=/credit_invoice.html
+
+[System--HTML Templates--Vendor Invoice]
+module=am.pl
+action=list_templates
+file=templates=/vendor_invoice.html
+
+[System--HTML Templates--Debit Invoice]
+module=am.pl
+action=list_templates
+file=templates=/debit_invoice.html
+
+[System--HTML Templates--AR Transaction]
+module=am.pl
+action=list_templates
+file=templates=/ar_transaction.html
+
+[System--HTML Templates--AP Transaction]
+module=am.pl
+action=list_templates
+file=templates=/ap_transaction.html
+
+[System--HTML Templates--Credit Note]
+module=am.pl
+action=list_templates
+file=templates=/credit_note.html
+
+[System--HTML Templates--Debit Note]
+module=am.pl
+action=list_templates
+file=templates=/debit_note.html
+
+[System--HTML Templates--Remittance Voucher]
+module=am.pl
+action=list_templates
+file=templates=/remittance_voucher.html
+
+[System--HTML Templates--Packing List]
+module=am.pl
+action=list_templates
+file=templates=/packing_list.html
+
+[System--HTML Templates--Pick List]
+module=am.pl
+action=list_templates
+file=templates=/pick_list.html
+
+[System--HTML Templates--Sales Order]
+module=am.pl
+action=list_templates
+file=templates=/sales_order.html
+
+[System--HTML Templates--Work Order]
+module=am.pl
+action=list_templates
+file=templates=/work_order.html
+
+[System--HTML Templates--Purchase Order]
+module=am.pl
+action=list_templates
+file=templates=/purchase_order.html
+
+[System--HTML Templates--Bin List]
+module=am.pl
+action=list_templates
+file=templates=/bin_list.html
+
+[System--HTML Templates--Statement]
+module=am.pl
+action=list_templates
+file=templates=/statement.html
+
+[System--HTML Templates--1.Reminder]
+module=am.pl
+action=list_templates
+file=templates=/reminder1.html
+
+[System--HTML Templates--2.Reminder]
+module=am.pl
+action=list_templates
+file=templates=/reminder2.html
+
+[System--HTML Templates--3.Reminder]
+module=am.pl
+action=list_templates
+file=templates=/reminder3.html
+
+[System--HTML Templates--Quotation]
+module=am.pl
+action=list_templates
+file=templates=/sales_quotation.html
+
+[System--HTML Templates--RFQ]
+module=am.pl
+action=list_templates
+file=templates=/request_quotation.html
+
+[System--HTML Templates--Time Card]
+module=am.pl
+action=list_templates
+file=templates=/timecard.html
+
+[System--LaTeX Templates]
+module=menu.pl
+action=acc_menu
+target=acc_menu
+submenu=1
+
+[System--LaTeX Templates--Sales Invoice]
+module=am.pl
+action=list_templates
+file=templates=/invoice.tex
+
+[System--LaTeX Templates--Credit Invoice]
+module=am.pl
+action=list_templates
+file=templates=/credit_invoice.tex
+
+[System--LaTeX Templates--Vendor Invoice]
+module=am.pl
+action=list_templates
+file=templates=/vendor_invoice.tex
+
+[System--LaTeX Templates--Debit Invoice]
+module=am.pl
+action=list_templates
+file=templates=/debit_invoice.tex
+
+[System--LaTeX Templates--AR Transaction]
+module=am.pl
+action=list_templates
+file=templates=/ar_transaction.tex
+
+[System--LaTeX Templates--AP Transaction]
+module=am.pl
+action=list_templates
+file=templates=/ap_transaction.tex
+
+[System--LaTeX Templates--Credit Note]
+module=am.pl
+action=list_templates
+file=templates=/credit_note.tex
+
+[System--LaTeX Templates--Debit Note]
+module=am.pl
+action=list_templates
+file=templates=/debit_note.tex
+
+[System--LaTeX Templates--Remittance Voucher]
+module=am.pl
+action=list_templates
+file=templates=/remittance_voucher.tex
+
+[System--LaTeX Templates--Packing List]
+module=am.pl
+action=list_templates
+file=templates=/packing_list.tex
+
+[System--LaTeX Templates--Pick List]
+module=am.pl
+action=list_templates
+file=templates=/pick_list.tex
+
+[System--LaTeX Templates--Sales Order]
+module=am.pl
+action=list_templates
+file=templates=/sales_order.tex
+
+[System--LaTeX Templates--Work Order]
+module=am.pl
+action=list_templates
+file=templates=/work_order.tex
+
+[System--LaTeX Templates--Purchase Order]
+module=am.pl
+action=list_templates
+file=templates=/purchase_order.tex
+
+[System--LaTeX Templates--Bin List]
+module=am.pl
+action=list_templates
+file=templates=/bin_list.tex
+
+[System--LaTeX Templates--Statement]
+module=am.pl
+action=list_templates
+file=templates=/statement.tex
+
+[System--LaTeX Templates--1.Reminder]
+module=am.pl
+action=list_templates
+file=templates=/reminder1.tex
+
+[System--LaTeX Templates--2.Reminder]
+module=am.pl
+action=list_templates
+file=templates=/reminder2.tex
+
+[System--LaTeX Templates--3.Reminder]
+module=am.pl
+action=list_templates
+file=templates=/reminder3.tex
+
+[System--LaTeX Templates--Check]
+module=am.pl
+action=list_templates
+file=templates=/check.tex
+
+[System--LaTeX Templates--Receipt]
+module=am.pl
+action=list_templates
+file=templates=/receipt.tex
+
+[System--LaTeX Templates--Quotation]
+module=am.pl
+action=list_templates
+file=templates=/sales_quotation.tex
+
+[System--LaTeX Templates--RFQ]
+module=am.pl
+action=list_templates
+file=templates=/request_quotation.tex
+
+[System--LaTeX Templates--Time Card]
+module=am.pl
+action=list_templates
+file=templates=/timecard.tex
+
+[System--Text Templates]
+module=menu.pl
+action=acc_menu
+target=acc_menu
+submenu=1
+
+[System--Text Templates--POS Invoice]
+module=am.pl
+action=list_templates
+file=templates=/pos_invoice.txt
+
+[Stylesheet]
+module=am.pl
+action=display_stylesheet
 
 [Preferences]
 module=am.pl
@@ -1388,4 +1650,8 @@ submenu=1
 module=reports.pl
 action=audit_search
 
+[Logout]
+module=login.pl
+action=logout
+target=_top
 
