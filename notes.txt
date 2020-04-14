@@ -7,17 +7,38 @@ dir: ledger123
 Install Libreoffice Calc for knowledgebase mapping of porting.
 
 Agenda:
-make a map of cooresponding table and field names between ledger123 and accounts-* packages. NO, just ledger123 tables to accounts-* tables.. and
 
-note all differences in the accounts-*-create.sql files (and any other porting notes).
+build qal_3g based on qfo_2g.  qal_3g spits out a series of form values based on the value of context, instead of qfo_2g's one form_html.
 
-transfer queries to .xql files as is (ie use asterisk if there, then later, convert asterisks to explicit field names --to save time, to accelerate to alpha stage.[DONE]
+
+requirement1: create object-like field definition procs like in hosting-farm, except each field is a name/value list with attributes: fieldname value(default:see datatype), title, datatype, context**, scalared_array_p(default:0)***. So the field-like definition procs will return list_of_lists.
+
+**context is the grouping of fields (kind of like fieldset), except the html for these fields are output into variable called "context" so that can be readily input into a template, such as accounts-ledger/www/admin/test-lib-page-frags-with-equalize.adp but located in accounts-ledger/lib
+
+*** scalared_array_p indicates that the variable is a scalared array, so consider cases name_1 ... name_N  For security, the value of N maybe passed as a hidden variable via db instead of form... something like qal__context_max
+
+requirement2: incorporate scalared arrays, where arrays or lists are adapted to html forms by adding a suffix number. x(1) becomes x_1, x(2) -> x_2 ... x_N. This way rows of data may be handled similarly. 
+
+
+
+transfer queries to .xql files as is (ie use asterisk if there, then later, convert asterisks to explicit field names --to save time, to accelerate to alpha stage.
+
+review business logic in SL procs. port to appropriate packges in the port.
+
+Use qfo_sp_table_g2 to build table reports.
+
+Done -----------------
+make a map of cooresponding table and field names between ledger123 and accounts-* packages. NO, just ledger123 tables to accounts-* tables.. [Done] and
+
+note all differences in the accounts-*-create.sql files (and any other porting notes).[Done]
+
+
 
 make a map of SL subroutines (sub sub_name) to file, as some names are shared in different files..
 Do subroutines that share same name have same code in each case? Or different?
+[Done]
 
-
-?Make a tcl proc, qal_left_join, qal_right_join, qal_inner_join, blah blah, that takes two lists, each containing fieldnames, and combines accordingly.. in order to convert sql queries to dynamically generated ones by tcl using the package table definitions (for consistency and maintainability?) Maybe not.. could reduce security.
+?Make a tcl proc, qal_left_join, qal_right_join, qal_inner_join, blah blah, that takes two lists, each containing fieldnames, and combines accordingly.. in order to transpose  ported sql queries to dynamically generated ones in SL. by tcl using the package table definitions (for consistency and maintainability?) Maybe not.. could reduce security.  Try to avoid dynamically generating. check psql logs for literal queries. Any dynamic cases need to be considered on a case by case basis.
 
 work on accounts-ledger focused items first.
  Any queries with shared AR go in AR.
