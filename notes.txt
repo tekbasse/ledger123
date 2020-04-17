@@ -6,6 +6,20 @@ dir: ledger123
 
 Install Libreoffice Calc for knowledgebase mapping of porting.
 
+Observations:
+
+# following appears to identify key business procedures initiated by UI.
+grep callback bin/mozilla/*.pl
+# callbacks are passed in UI. Identified by bin/mozilla/<filename>.pl? and
+#  passed parameters using http/cgi.
+
+# standardized variables:
+# rowcount =  used to count itemized rows, for example parts in an invoice
+#             and passed via UI
+
+
+
+
 Agenda:
 
 build qal_3g based on qfo_2g.  qal_3g spits out a series of form values based on the value of context, instead of qfo_2g's one form_html.
