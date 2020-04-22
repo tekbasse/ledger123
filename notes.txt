@@ -17,12 +17,23 @@ grep callback bin/mozilla/*.pl
 # rowcount =  used to count itemized rows, for example parts in an invoice
 #             and passed via UI
 
+ct = 'vendor' or 'customer' (or 'contact')
+
+queries are built from SL/*.pm and bin/mozilla/*.pl. Check header of *.pl for
+reference to *.pm
+
+SL/Form.pm contains form building routines and other utilities, such as number
+formatting, locale translation etc.
 
 
 
-Agenda:
+Use qfo_sp_table_g2 to build table reports.
 
-build qal_3g based on qfo_2g.  qal_3g spits out a series of form values based on the value of context, instead of qfo_2g's one form_html.
+########Agenda:
+ transpose/port dynamically generated SL queries to OpenACS xql files to be called by tcl. Use the package table definitions  verify with psql logs for literal queries. Avoid building dynamic sql queries for security reasons.
+transfer queries to .xql files as close to original as possible (ie use asterisk if there, then later, convert asterisks to explicit field names --to save time, to accelerate to alpha stage.
+
+review business logic in SL procs. port to appropriate packges in the port.
 
 
 requirement1: create object-like field definition procs like in hosting-farm, except each field is a name/value list with attributes: fieldname value(default:see datatype), title, datatype, context**, scalared_array_p(default:0)***. So the field-like definition procs will return list_of_lists.
@@ -30,21 +41,89 @@ requirement1: create object-like field definition procs like in hosting-farm, ex
 **context is the grouping of fields (kind of like fieldset), except the html for these fields are output into variable called "context" so that can be readily input into a template, such as accounts-ledger/www/admin/test-lib-page-frags-with-equalize.adp but located in accounts-ledger/lib
 
 *** scalared_array_p indicates that the variable is a scalared array, so consider cases name_1 ... name_N  For security, the value of N maybe passed as a hidden variable via db instead of form... something like qal__context_max
-
-requirement2: incorporate scalared arrays, where arrays or lists are adapted to html forms by adding a suffix number. x(1) becomes x_1, x(2) -> x_2 ... x_N. This way rows of data may be handled similarly. 
-
+###Note, this is not used. Use: qfo::form_list_def_to_css_table_rows and qal_3g.
 
 
-transfer queries to .xql files as is (ie use asterisk if there, then later, convert asterisks to explicit field names --to save time, to accelerate to alpha stage.
+Form = form utilities
 
-review business logic in SL procs. port to appropriate packges in the port.
+accounts-contacts
+ct = customers/vendors/contacts
 
-Use qfo_sp_table_g2 to build table reports.
+accounts-ledger
+aa = AP / AR common routines
+am = administration
+AM = Admin module, chart of accounts, template routines, preferences
+arap = common routines for gl, ar, ap, is, ir, oe
+araprn = printing routines for ar, ap
+ca = Chart of Accounts, Income Statement, Balance Sheet, search and edit transactions posted by the GL, AR, and AP
+CP = Check and receipt printing payment module
+gl = general ledger
+Num2text = routine for check writing
+oe = Order Entry, Quotation module
+OP = Overpayment utils used in AR,AP,IS,IR,OE,CP
+pe = project / job administration
+pe = project/job, partsgroup admininstration, and translation maintenance
+rc = account reconciliation module
+reports.pl = inventoy onhand qty and value by based on FIFO
+rp = reports, prepare Income Statement and Balance Sheet
+
+
+accounts-payables
+ap = Accounts Payable
+
+accounts-receivables
+ar = Accounts Receivable
+
+accounts-pos
+pos = Point of Sale POS
+ps = POS script
+
+inventory-control
+ic = inventory control
+trf = transfer inventory utils
+
+accounts-finance
+jc = job costing module
+
+accounts-payroll
+hr = Payroll and Human Resources
+
+q-tables
+im = import/export
+mylib = export to xls, to csv,
+
+accounts-desk
+bp = Batch Printing
+vr = voucher/batch register and processing setup
+
+other related OpenACS packages to expand features/vertical markets later:
+
+affiliates
+contact-support
+online-catalog
+q-wiki  {user-side templating}
+spreadsheet
+
+futil
+Inifile = utils to get win.ini style files
+
+
 
 Done -----------------
+
+q-control user permissions RBAC/IAM based [Done]
+q-data-types for validation of more specific data types [Done ]
+q-forms form handing routines for app building [Done]
+
+
+build qal_3g based on qfo_2g.  qal_3g spits out a series of form values based on the value of context, instead of qfo_2g's one form_html.[Done]
+
+
 make a map of cooresponding table and field names between ledger123 and accounts-* packages. NO, just ledger123 tables to accounts-* tables.. [Done] and
 
 note all differences in the accounts-*-create.sql files (and any other porting notes).[Done]
+
+requirement2: incorporate scalared arrays, where arrays or lists are adapted to html forms by adding a suffix number. x(1) becomes x_1, x(2) -> x_2 ... x_N. This way rows of data may be handled similarly. [Done: qfo::form_list_def_to_css_table_rows & qfo_3g]
 
 
 
@@ -52,7 +131,6 @@ make a map of SL subroutines (sub sub_name) to file, as some names are shared in
 Do subroutines that share same name have same code in each case? Or different?
 [Done]
 
-?Make a tcl proc, qal_left_join, qal_right_join, qal_inner_join, blah blah, that takes two lists, each containing fieldnames, and combines accordingly.. in order to transpose  ported sql queries to dynamically generated ones in SL. by tcl using the package table definitions (for consistency and maintainability?) Maybe not.. could reduce security.  Try to avoid dynamically generating. check psql logs for literal queries. Any dynamic cases need to be considered on a case by case basis.
 
 work on accounts-ledger focused items first.
  Any queries with shared AR go in AR.
@@ -143,94 +221,19 @@ io = custom routines used in is, ir, oe
 
 
 
-Divided by OpenACS package
-
-accounts-contacts
-ct = customers/vendors
-
-accounts-desk
-bp = Batch Printing
-vr = voucher/batch register and processing setup
+Divided by OpenACS package (in order of dependencies)
 
 
-accounts-finance
-jc = job costing module
-
-accounts-payroll
-hr = Payroll and Human Resources
-
-accounts-ledger
-gl = general ledger
-AM = Admin module, chart of accounts, template routines, preferences
-aa = AP / AR common routines
-am = administration
-arap = common routines for gl, ar, ap, is, ir, oe
-araprn = printing routines for ar, ap
-ca = Chart of Accounts, Income Statement, Balance Sheet, search and edit transactions posted by the GL, AR, and AP
-CP = Check and receipt printing payment module
-Num2text = routine for check writing
-oe = Order Entry, Quotation module
-OP = Overpayment utils used in AR,AP,IS,IR,OE,CP
-pe = project / job administration
-pe = project/job, partsgroup admininstration, and translation maintenance
-rc = account reconciliation module
-reports.pl = inventoy onhand qty and value by based on FIFO
-rp = reports, prepare Income Statement and Balance Sheet
-
-
-accounts-pos
-pos = Point of Sale POS
-ps = POS script
-
-
-accounts-payables
-ap = Accounts Payable
-
-accounts-receivables
-ar = Accounts Receivable
-
-affiliates
-
-
-contact-support
-
-
-online-catalog
-
-
-inventory-control
-ic = inventory control
-trf = transfer inventory utils
-
-q-control
-
-
-q-data-types
-
-
-q-forms
-Form = form utilities
-
-q-tables
-im = import/export
-mylib = export to xls, to csv,
-
-
-q-wiki
-
-
-spreadsheet
-
-futil
-Inifile = utils to get win.ini style files
-
-
-openacs
+openacs [Done]
 login = login/logout frontend, db api setup
 Mailer = email utilities 
 menu = menu, two frame layout with refactored menu
 lib = api library
 pw = password routines
 user = user related functions
+
+
+
+
 
 
