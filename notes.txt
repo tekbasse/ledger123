@@ -27,6 +27,7 @@ formatting, locale translation etc.
 
 
 
+
 Use qfo_sp_table_g2 to build table reports.
 
 ########Agenda:
@@ -35,7 +36,51 @@ Use qfo_sp_table_g2 to build table reports.
 transpose/port dynamically generated SL queries to OpenACS xql files to be called by tcl. Use the package table definitions  verify with psql logs for literal queries. Avoid building dynamic sql queries for security reasons.
 transfer queries to .xql files as close to original as possible (ie use asterisk if there, then later, convert asterisks to explicit field names --to save time, to accelerate to alpha stage.
 
-Pages (and queries) are built using ledger123/??.pl which calls bin/mozilla/??.pl which imports SL/??.pm and Form.pm  See notes-priorities.txt for order of processing/porting..
+Pages are built using ledger123/login.pl which
+calls ledger123/??.pl which
+loads SL/Form.pm and
+calls bin/mozilla/??.pl which
+imports SL/??.pm
+
+See notes-priorities.txt for order of processing/porting..
+
+These have 'query' in them:
+bin/mozilla/reports.pl
+bin/mozilla/lib.pl
+bin/mozilla/rp.pl
+bin/mozilla/custom_am.pl
+bin/mozilla/gl.pl
+bin/mozilla/trf.pl
+bin/mozilla/im.pl
+bin/mozilla/ic.pl
+bin/mozilla/mylib.pl
+bin/mozilla/custom_is.pl
+SL/CP.pm
+SL/VR.pm
+SL/HR.pm
+SL/RC.pm
+SL/CA.pm
+SL/OP.pm
+SL/RP.pm
+SL/OE.pm
+SL/IS.pm
+SL/AA.pm
+SL/IC.pm
+SL/BP.pm
+SL/IM.pm
+SL/GL.pm
+SL/CT.pm
+SL/User.pm
+SL/AM.pm
+SL/PE.pm
+SL/JC.pm
+SL/IR.pm
+SL/Trf.pm
+SL/Form.pm
+
+ct.pl contains form html/defs for many vendor/customer forms,
+port those to accounts-contacts/lib/form-name.adp/tcl pairs like
+using templates in accounts-ledger/www/admin/test-*
 
 
 review business logic in SL procs. port to appropriate packges in the port.
