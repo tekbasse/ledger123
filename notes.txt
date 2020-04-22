@@ -30,8 +30,13 @@ formatting, locale translation etc.
 Use qfo_sp_table_g2 to build table reports.
 
 ########Agenda:
- transpose/port dynamically generated SL queries to OpenACS xql files to be called by tcl. Use the package table definitions  verify with psql logs for literal queries. Avoid building dynamic sql queries for security reasons.
+
+
+transpose/port dynamically generated SL queries to OpenACS xql files to be called by tcl. Use the package table definitions  verify with psql logs for literal queries. Avoid building dynamic sql queries for security reasons.
 transfer queries to .xql files as close to original as possible (ie use asterisk if there, then later, convert asterisks to explicit field names --to save time, to accelerate to alpha stage.
+
+Pages (and queries) are built using ledger123/??.pl which calls bin/mozilla/??.pl which imports SL/??.pm and Form.pm  See notes-priorities.txt for order of processing/porting..
+
 
 review business logic in SL procs. port to appropriate packges in the port.
 
@@ -44,72 +49,9 @@ requirement1: create object-like field definition procs like in hosting-farm, ex
 ###Note, this is not used. Use: qfo::form_list_def_to_css_table_rows and qal_3g.
 
 
-Form = form utilities
-
-accounts-contacts
-ct = customers/vendors/contacts
-
-accounts-ledger
-aa = AP / AR common routines
-am = administration
-AM = Admin module, chart of accounts, template routines, preferences
-arap = common routines for gl, ar, ap, is, ir, oe
-araprn = printing routines for ar, ap
-ca = Chart of Accounts, Income Statement, Balance Sheet, search and edit transactions posted by the GL, AR, and AP
-CP = Check and receipt printing payment module
-gl = general ledger
-Num2text = routine for check writing
-oe = Order Entry, Quotation module
-OP = Overpayment utils used in AR,AP,IS,IR,OE,CP
-pe = project / job administration
-pe = project/job, partsgroup admininstration, and translation maintenance
-rc = account reconciliation module
-reports.pl = inventoy onhand qty and value by based on FIFO
-rp = reports, prepare Income Statement and Balance Sheet
 
 
-accounts-payables
-ap = Accounts Payable
-
-accounts-receivables
-ar = Accounts Receivable
-
-accounts-pos
-pos = Point of Sale POS
-ps = POS script
-
-inventory-control
-ic = inventory control
-trf = transfer inventory utils
-
-accounts-finance
-jc = job costing module
-
-accounts-payroll
-hr = Payroll and Human Resources
-
-q-tables
-im = import/export
-mylib = export to xls, to csv,
-
-accounts-desk
-bp = Batch Printing
-vr = voucher/batch register and processing setup
-
-other related OpenACS packages to expand features/vertical markets later:
-
-affiliates
-contact-support
-online-catalog
-q-wiki  {user-side templating}
-spreadsheet
-
-futil
-Inifile = utils to get win.ini style files
-
-
-
-Done -----------------
+################ Done -----------------
 
 q-control user permissions RBAC/IAM based [Done]
 q-data-types for validation of more specific data types [Done ]
