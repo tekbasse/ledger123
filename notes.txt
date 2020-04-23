@@ -6,7 +6,7 @@ dir: ledger123
 
 Install Libreoffice Calc for knowledgebase mapping of porting.
 
-Observations:
+############Observations:
 
 # following appears to identify key business procedures initiated by UI.
 grep callback bin/mozilla/*.pl
@@ -18,6 +18,14 @@ grep callback bin/mozilla/*.pl
 #             and passed via UI
 
 ct = 'vendor' or 'customer' (or 'contact')
+# and yet.
+#grep db notes-menu.ini.txt
+# returns these cases:
+db=customer
+db=vendor
+db=employee
+# subsequently, simplifying interpretation of $db, E.g. with ct
+
 
 queries are built from SL/*.pm and bin/mozilla/*.pl. Check header of *.pl for
 reference to *.pm
@@ -78,13 +86,15 @@ SL/IR.pm
 SL/Trf.pm
 SL/Form.pm
 
+ct.pl  <-- builds forms.. review when drafting UI's
 ct.pl contains form html/defs for many vendor/customer forms,
 port those to accounts-contacts/lib/form-name.adp/tcl pairs like
 using templates in accounts-ledger/www/admin/test-*
 
 
 review business logic in SL procs. port to appropriate packges in the port.
-
+Form.pm sub format_amount plays with positive/negative sign in context
+of CR and DB, and formating.
 
 requirement1: create object-like field definition procs like in hosting-farm, except each field is a name/value list with attributes: fieldname value(default:see datatype), title, datatype, context**, scalared_array_p(default:0)***. So the field-like definition procs will return list_of_lists.
 
@@ -97,6 +107,9 @@ requirement1: create object-like field definition procs like in hosting-farm, ex
 
 
 ################ Done -----------------
+
+CT.pm  put into accounts-contacts
+
 
 q-control user permissions RBAC/IAM based [Done]
 q-data-types for validation of more specific data types [Done ]
