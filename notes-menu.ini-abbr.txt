@@ -1,0 +1,1239 @@
+#Annotated and reorganized to be more grouped by /consistent with module
+# Submenu in all cases looks like this:
+#  module=menu.pl
+#  action=acc_menu
+#  target=acc_menu
+#  submenu=1
+# probably a js-ism.. nothing to do there directly due to design changes.
+
+[AR]
+
+[AR--Add Transaction]
+module=ar.pl
+action=add
+type=transaction
+
+[AR--Credit Note]
+module=ar.pl
+action=add
+type=credit_note
+
+
+[AR--Reports--Transactions]
+module=ar.pl
+action=search
+nextsub=transactions
+
+[AR--Reports--Outstanding]
+module=ar.pl
+action=search
+outstanding=1
+nextsub=transactions
+
+
+
+[AR--Sales Invoice]
+module=is.pl
+action=add
+type=invoice
+
+[AR--Credit Invoice]
+module=is.pl
+action=add
+type=credit_invoice
+
+
+
+[AR--Reports]
+
+[AR--Reports--AR Aging]
+module=rp.pl
+action=report
+report=ar_aging
+
+[AR--Reports--Reminder]
+module=rp.pl
+action=report
+report=reminder
+
+[AR--Reports--Tax collected]
+module=rp.pl
+action=report
+report=tax_collected
+reportsub=generate_tax_report
+
+[AR--Reports--Non-taxable]
+module=rp.pl
+action=report
+report=nontaxable_sales
+reportsub=generate_tax_report
+
+
+
+[POS]
+
+[POS--Sale]
+module=ps.pl 
+action=add
+nextsub=openinvoices
+
+[POS--Open]
+module=ps.pl   
+action=openinvoices
+
+[POS--Receipts]
+module=ps.pl
+action=receipts
+
+
+
+[Customers]
+
+[Customers--Add Customer]
+module=ct.pl
+action=add
+db=customer
+
+[Customers--Reports]
+
+[Customers--Reports--Search]
+module=ct.pl
+action=search
+db=customer
+
+[Customers--Reports--History]
+module=ct.pl
+action=history
+db=customer
+
+
+
+[AP]
+
+[AP--Add Transaction]
+module=ap.pl
+action=add
+type=transaction
+
+[AP--Debit Note]
+module=ap.pl
+action=add
+type=debit_note
+
+
+[AP--Vendor Invoice]
+module=ir.pl
+action=add
+type=invoice
+
+[AP--Debit Invoice]
+module=ir.pl
+action=add
+type=debit_invoice
+
+
+[AP--Reports]
+
+[AP--Reports--Transactions]
+module=ap.pl
+action=search
+nextsub=transactions
+
+[AP--Reports--Outstanding]
+module=ap.pl
+action=search
+outstanding=1
+nextsub=transactions
+
+
+
+
+[AP--Reports--AP Aging]
+module=rp.pl
+action=report
+report=ap_aging
+
+[AP--Reports--Tax paid]
+module=rp.pl
+action=report
+report=tax_paid
+reportsub=generate_tax_report
+
+[AP--Reports--Non-taxable]
+module=rp.pl
+action=report
+report=nontaxable_purchases
+reportsub=generate_tax_report
+
+
+[Vendors]
+
+[Vendors--Add Vendor]
+module=ct.pl
+action=add
+db=vendor
+
+[Vendors--Reports]
+
+[Vendors--Reports--Search]
+module=ct.pl
+action=search
+db=vendor
+
+[Vendors--Reports--History]
+module=ct.pl
+action=history
+db=vendor
+
+
+
+
+[Cash]
+
+[Cash--Receipt]
+module=cp.pl
+action=payment
+type=receipt
+
+[Cash--Receipts]
+module=cp.pl
+action=payments
+type=receipt
+
+[Cash--Payment]
+module=cp.pl
+action=payment
+type=check
+
+[Cash--Payments]
+module=cp.pl
+action=payments
+type=check
+
+
+
+
+
+[Cash--Foreign Exchange (FX) Adjustment]
+module=gl.pl
+action=add
+fxadj=1
+
+[Cash--Reconciliation]
+module=rc.pl
+action=reconciliation
+
+[Cash--Reports--Reconciliation]
+module=rc.pl
+action=reconciliation
+report=1
+
+[Cash--Reports]
+
+[Cash--Reports--Receipts]
+module=rp.pl
+action=report
+report=receipts
+
+[Cash--Reports--Payments]
+module=rp.pl
+action=report
+report=payments
+
+
+[Vouchers]
+
+[Vouchers--Payable]
+module=vr.pl
+action=payable_batch
+
+[Vouchers--Payment]
+module=vr.pl
+action=payment_batch
+
+[Vouchers--Payments]
+module=vr.pl
+action=payments_batch
+
+[Vouchers--Payment Reversal]
+module=vr.pl
+action=payment_reversal_batch
+
+[Vouchers--General Ledger]
+module=vr.pl
+action=general_ledger_batch
+
+[Vouchers--Reports]
+
+[Vouchers--Reports--All Batches]
+module=vr.pl
+action=search
+
+[Vouchers--Reports--Payable]
+module=vr.pl
+action=search
+batch=ap
+
+[Vouchers--Reports--Payment]
+module=vr.pl
+action=search
+batch=payment
+
+[Vouchers--Reports--Payment Reversal]
+module=vr.pl
+action=search
+batch=payment_reversal
+
+[Vouchers--Reports--General Ledger]
+module=vr.pl
+action=search
+batch=gl
+
+
+
+
+[HR]
+
+[HR--Employees]
+
+[HR--Employees--Add Employee]
+module=hr.pl
+action=add
+db=employee
+
+[HR--Employees--Reports]
+module=hr.pl
+action=search
+db=employee
+
+
+
+
+[Order Entry]
+
+[Order Entry--Sales Order]
+module=oe.pl
+action=add
+type=sales_order
+
+[Order Entry--Purchase Order]
+module=oe.pl
+action=add
+type=purchase_order
+
+[Order Entry--Reports]
+
+[Order Entry--Reports--Sales Orders]
+module=oe.pl
+action=search
+type=sales_order
+
+[Order Entry--Reports--Purchase Orders]
+module=oe.pl
+action=search
+type=purchase_order
+
+[Order Entry--Generate]
+
+[Order Entry--Generate--Purchase Orders]
+module=oe.pl
+action=search
+type=generate_purchase_order
+
+[Order Entry--Consolidate]
+ 
+[Order Entry--Consolidate--Sales Orders]
+module=oe.pl
+action=search
+type=consolidate_sales_order
+
+[Order Entry--Consolidate--Purchase Orders]
+module=oe.pl
+action=search
+type=consolidate_purchase_order
+
+
+[Order Entry--Reports--Requirements]
+module=ic.pl
+action=so_requirements
+
+
+
+
+
+[Shipping]
+
+[Shipping--Ship]
+module=oe.pl
+action=search
+type=ship_order
+
+[Shipping--Receive]
+module=oe.pl
+action=search
+type=receive_order
+
+[Shipping--Transfer Inventory]
+module=oe.pl
+action=search_transfer
+
+
+
+
+[Warehouses]
+
+[Warehouses--Add Transfer]
+module=trf.pl
+action=add
+
+[Warehouses--Reports]
+
+[Warehouses--Reports--Transfers]
+module=trf.pl
+action=search
+
+[Warehouses--Reports--Deliveries]
+module=trf.pl
+action=delivered_search
+
+
+
+[Warehouses--Reports--Onhand]
+module=reports.pl
+action=onhand_search
+
+[Warehouses--Reports--Activity]
+module=reports.pl
+action=iactivity_search
+
+
+
+
+[Quotations]
+
+[Quotations--Quotation]
+module=oe.pl 
+action=add 
+type=sales_quotation
+
+[Quotations--RFQ]
+module=oe.pl 
+action=add 
+type=request_quotation
+
+[Quotations--Reports]
+
+[Quotations--Reports--Quotations]
+module=oe.pl
+action=search
+type=sales_quotation
+
+[Quotations--Reports--RFQs]
+module=oe.pl
+action=search
+type=request_quotation
+
+
+
+
+[General Ledger]
+
+[General Ledger--Add Transaction]
+module=gl.pl
+action=add
+
+[General Ledger--Reports]
+module=gl.pl
+action=search
+
+[General Ledger--Export]
+module=reports.pl
+action=gl_search
+
+
+
+
+[Goods & Services]
+
+[Goods & Services--Add Part]
+module=ic.pl
+action=add
+item=part
+
+[Goods & Services--Add Service]
+module=ic.pl
+action=add
+item=service
+
+[Goods & Services--Add Assembly]
+module=ic.pl
+action=add
+item=assembly
+
+[Goods & Services--Add Labor/Overhead]
+module=ic.pl
+action=add
+item=labor
+
+
+
+[Goods & Services--Add Group]
+module=pe.pl
+action=add
+type=partsgroup
+
+[Goods & Services--Add Pricegroup]
+module=pe.pl
+action=add
+type=pricegroup
+
+
+
+[Goods & Services--Stock Assembly]
+module=ic.pl
+action=stock_assembly
+
+[Goods & Services--Changeup]
+
+[Goods & Services--Changeup--Assembly]
+module=ic.pl
+action=search
+searchitems=assembly
+changeup=1
+
+[Goods & Services--Changeup--Part]
+module=ic.pl
+action=search
+searchitems=part
+changeup=1
+
+[Goods & Services--Changeup--Service]
+module=ic.pl
+action=search
+searchitems=service
+changeup=1
+
+[Goods & Services--Changeup--Labor/Overhead]
+module=ic.pl
+action=search
+searchitems=labor
+changeup=1
+
+[Goods & Services--Reports]
+
+[Goods & Services--Reports--All Items]
+module=ic.pl
+action=search
+searchitems=all
+
+[Goods & Services--Reports--Parts]
+module=ic.pl
+action=search
+searchitems=part
+
+[Goods & Services--Reports--Requirements]
+module=ic.pl
+action=requirements
+
+[Goods & Services--Reports--Services]
+module=ic.pl
+action=search
+searchitems=service
+
+[Goods & Services--Reports--Labor/Overhead]
+module=ic.pl
+action=search
+searchitems=labor
+
+[Goods & Services--Reports--Assemblies]
+module=ic.pl
+action=search
+searchitems=assembly
+
+[Goods & Services--Reports--Components]
+module=ic.pl
+action=search
+searchitems=component
+
+[Goods & Services--Reports--Onhand Value]
+module=reports.pl
+action=onhandvalue_search
+
+[Goods & Services--Translations]
+
+
+[Goods & Services--Reports--Groups]
+module=pe.pl
+action=search
+type=partsgroup
+
+[Goods & Services--Reports--Pricegroups]
+module=pe.pl
+action=search
+type=pricegroup
+
+[Goods & Services--Translations--Description]
+module=pe.pl
+action=translation
+translation=description
+
+[Goods & Services--Translations--Groups]
+module=pe.pl
+action=translation
+translation=partsgroup
+
+
+
+
+
+
+
+[Projects]
+
+[Projects--Add Project]
+module=pe.pl
+action=add
+type=project
+
+[Projects--Add Time Card]
+module=jc.pl
+action=add
+type=timecard
+project=project
+
+[Projects--Reports]
+
+[Projects--Reports--List Projects]
+module=pe.pl
+action=search
+type=project
+
+[Projects--Reports--Transactions]
+module=rp.pl
+action=report
+report=projects
+
+[Projects--Reports--Summary]
+module=reports.pl
+action=projects_search
+
+[Projects--Reports--Time Cards]
+module=jc.pl 
+action=search
+type=timecard
+project=project
+
+[Projects--Generate]
+
+[Projects--Generate--Sales Orders]
+module=pe.pl
+action=project_sales_order
+
+
+[Projects--Translations]
+
+[Projects--Translations--Description]
+module=pe.pl
+action=translation
+translation=project
+
+
+
+
+
+[Reports]
+
+
+
+[Reports--Trial Balance]
+module=rp.pl
+action=report
+report=trial_balance
+
+[Reports--Income Statement]
+module=rp.pl
+action=report
+report=income_statement
+
+[Reports--Balance Sheet]
+module=rp.pl
+action=report
+report=balance_sheet
+
+[Reports--Taxes]
+module=rp.pl
+action=report
+report=tax_collected
+reportsub=generate_tax_report_all
+
+
+
+[Reports--Project Income Statement]
+module=reports.pl
+action=income_statement
+pivotby=project
+
+[Reports--Department Income Statement]
+module=reports.pl
+action=income_statement
+pivotby=department
+
+
+
+[Reports--Chart of Accounts]
+module=ca.pl
+action=chart_of_accounts
+
+
+[Recurring Transactions]
+module=am.pl
+action=recurring_transactions
+
+
+
+[Batch]
+
+[Batch--Print]
+
+[Batch--Print--Sales Invoices]
+module=bp.pl
+action=search
+type=invoice
+vc=customer
+batch=print
+
+[Batch--Print--Remittance Vouchers]
+module=bp.pl
+action=search
+type=remittance_voucher
+vc=customer
+batch=print
+
+[Batch--Print--Sales Orders]
+module=bp.pl
+action=search
+type=sales_order
+batch=print
+
+[Batch--Print--Work Orders]
+module=bp.pl
+action=search
+type=work_order
+batch=print
+
+[Batch--Print--Quotations]
+module=bp.pl
+action=search
+type=sales_quotation
+batch=print
+
+[Batch--Print--Packing Lists]
+module=bp.pl
+action=search
+type=packing_list
+batch=print
+
+[Batch--Print--Pick Lists]
+module=bp.pl
+action=search
+type=pick_list
+batch=print
+
+[Batch--Print--Vendor Invoices]
+module=bp.pl
+action=search
+type=invoice
+vc=vendor
+batch=print
+
+[Batch--Print--Purchase Orders]
+module=bp.pl
+action=search
+type=purchase_order
+batch=print
+
+[Batch--Print--Bin Lists]
+module=bp.pl
+action=search
+type=bin_list
+batch=print
+
+[Batch--Print--RFQs]
+module=bp.pl
+action=search
+type=request_quotation
+batch=print
+
+[Batch--Print--Time Cards]
+module=bp.pl
+action=search
+type=timecard
+batch=print
+
+[Batch--Email]
+
+[Batch--Email--Sales Invoices]
+module=bp.pl
+action=search
+type=invoice
+vc=customer
+batch=email
+
+[Batch--Email--Remittance Vouchers]
+module=bp.pl
+action=search
+type=remittance_voucher
+vc=customer
+batch=email
+
+[Batch--Email--Sales Orders]
+module=bp.pl
+action=search
+type=sales_order
+batch=email
+
+[Batch--Email--Work Orders]
+module=bp.pl
+action=search
+type=work_order
+batch=email
+
+[Batch--Email--Quotations]
+module=bp.pl
+action=search
+type=sales_quotation
+batch=email
+
+[Batch--Email--Packing Lists]
+module=bp.pl
+action=search
+type=packing_list
+batch=email
+
+[Batch--Email--Pick Lists]
+module=bp.pl
+action=search
+type=pick_list
+batch=email
+
+[Batch--Email--Vendor Invoices]
+module=bp.pl
+action=search
+type=invoice
+vc=vendor
+batch=email
+
+[Batch--Email--Purchase Orders]
+module=bp.pl
+action=search
+type=purchase_order
+batch=email
+
+[Batch--Email--Bin Lists]
+module=bp.pl
+action=search
+type=bin_list
+batch=email
+
+[Batch--Email--RFQs]
+module=bp.pl
+action=search
+type=request_quotation
+batch=email
+
+[Batch--Queue]
+
+[Batch--Queue--Sales Invoices]
+module=bp.pl
+action=search
+type=invoice
+vc=customer
+batch=queue
+
+[Batch--Queue--Remittance Vouchers]
+module=bp.pl
+action=search
+type=remittance_voucher
+vc=customer
+batch=queue
+
+[Batch--Queue--Sales Orders]
+module=bp.pl
+action=search
+type=sales_order
+batch=queue
+
+[Batch--Queue--Work Orders]
+module=bp.pl
+action=search
+type=work_order
+batch=queue
+
+[Batch--Queue--Quotations]
+module=bp.pl
+action=search
+type=sales_quotation
+batch=queue
+
+[Batch--Queue--Packing Lists]
+module=bp.pl
+action=search
+type=packing_list
+batch=queue
+
+[Batch--Queue--Pick Lists]
+module=bp.pl
+action=search
+type=pick_list
+batch=queue
+
+[Batch--Queue--Vendor Invoices]
+module=bp.pl
+action=search
+type=invoice
+vc=vendor
+batch=queue
+
+[Batch--Queue--Purchase Orders]
+module=bp.pl
+action=search
+type=purchase_order
+batch=queue
+
+[Batch--Queue--Bin Lists]
+module=bp.pl
+action=search
+type=bin_list
+batch=queue
+
+[Batch--Queue--RFQs]
+module=bp.pl
+action=search
+type=request_quotation
+batch=queue
+
+[Batch--Queue--Time Cards]
+module=bp.pl
+action=search
+type=timecard
+batch=queue
+
+
+
+
+
+[Exchange Rates]
+module=am.pl
+action=search_exchangerates
+
+
+
+These are to be handled in accounts-ledger/admin:
+
+
+
+[Import]
+
+[Import--Sales Invoices]
+module=im.pl
+action=import
+type=sales_invoice
+
+[Import--Payments]
+module=im.pl
+action=import
+type=payment
+
+[Import--AR Transactions]
+module=im.pl
+action=import
+type=transactions
+ARAP=AR
+vc=customer
+
+[Import--AP Transactions]
+module=im.pl
+action=import
+type=transactions
+ARAP=AP
+vc=vendor
+
+[Import--General Ledger]
+module=im.pl
+action=import
+type=gl
+
+[Import--Sales Orders]
+module=im.pl
+action=import
+type=sales_order
+
+[Import--Purchase Orders]
+module=im.pl
+action=import
+type=purchase_order
+
+[Import--Parts]
+module=im.pl
+action=import
+type=parts
+
+[Import--Services]
+module=im.pl
+action=import
+type=service
+
+[Import--Customer Price List]
+module=im.pl
+action=import
+type=partscustomer
+
+[Import--Vendor Price List]
+module=im.pl
+action=import
+type=partsvendor
+
+[Import--Customers]
+module=im.pl
+action=import
+type=vc
+db=customer
+
+[Import--Vendors]
+module=im.pl
+action=import
+type=vc
+db=vendor
+
+[Import--Chart]
+module=im.pl
+action=import
+type=account
+
+[Export]
+
+[Export--Payments]
+module=im.pl
+action=export
+type=payment
+
+
+#[Export--CSV]
+#module=am.pl
+#action=getsql
+
+[System]
+
+[System--Audit Control]
+module=am.pl
+action=audit_control
+
+[System--Audit Trail]
+module=reports.pl
+action=audit_search
+
+[System--Remove Locks]
+module=am.pl
+action=clear_locks
+
+[System--Defaults]
+module=am.pl
+action=defaults
+
+[System--Bank Accounts]
+module=am.pl
+action=bank_accounts
+
+[System--Taxes]
+module=am.pl
+action=taxes
+
+[System--Yearend]
+module=am.pl
+action=yearend
+
+[System--Ledger Doctor]
+module=am.pl
+action=ask_dbcheck
+
+[System--Backup]
+
+[System--Backup--Send by E-Mail]
+module=am.pl
+action=backup
+media=email
+
+[System--Backup--Save to File]
+module=am.pl
+action=backup
+media=file
+
+[System--Chart of Accounts]
+
+[System--Chart of Accounts--Add Account]
+module=am.pl
+action=add_account
+
+[System--Chart of Accounts--List Accounts]
+module=am.pl
+action=list_account
+
+
+[System--Repost COGS]
+module=is.pl
+action=ask_repost
+
+
+[System--Chart of Accounts--Translations]
+module=pe.pl
+action=translation
+translation=chart
+
+
+
+[System--Chart of Accounts--Add GIFI]
+module=am.pl
+action=add_gifi
+
+[System--Chart of Accounts--List GIFI]
+module=am.pl
+action=list_gifi
+
+[System--Currencies]
+
+[System--Currencies--Add Currency]
+module=am.pl
+action=add_currency
+
+[System--Currencies--List Currencies]
+module=am.pl
+action=list_currencies
+
+[System--Payment Method]
+
+[System--Payment Method--Add Method]
+module=am.pl
+action=add_payment_method
+
+[System--Payment Method--List Methods]
+module=am.pl
+action=list_paymentmethod
+
+[System--Warehouses]
+
+[System--Warehouses--Add Warehouse]
+module=am.pl
+action=add_warehouse
+
+[System--Warehouses--List Warehouses]
+module=am.pl
+action=list_warehouse
+
+[System--Departments]
+
+[System--Departments--Add Department]
+module=am.pl
+action=add_department
+
+[System--Departments--List Departments]
+module=am.pl
+action=list_department
+
+[System--Type of Business]
+
+[System--Type of Business--Add Business]
+module=am.pl
+action=add_business
+
+[System--Type of Business--List Businesses]
+module=am.pl
+action=list_business
+
+[System--Language]
+
+[System--Language--Add Language]
+module=am.pl
+action=add_language
+
+[System--Language--List Languages]
+module=am.pl
+action=list_language
+
+[System--SIC]
+
+[System--SIC--Add SIC]
+module=am.pl
+action=add_sic
+
+[System--SIC--List SIC]
+module=am.pl
+action=list_sic
+
+
+
+
+[Preferences]
+module=am.pl
+action=config
+
+[Version]
+module=am.pl
+action=company_logo
+
+[New Window]
+module=menu.pl
+action=display
+main=company_logo
+target=_blank
+
+
+
+[More Reports]
+
+[More Reports--AR]
+
+[More Reports--AR--Transactions]
+module=reports.pl
+action=trans_search
+aa=AR
+
+[More Reports--AR--Customer Balances]
+module=reports.pl
+action=vc_search
+vc=customer
+
+[More Reports--AR--Customer Activity]
+module=reports.pl
+action=vcactivity_search
+vc=customer
+
+[More Reports--AP]
+
+[More Reports--AP--Transactions]
+module=reports.pl
+action=trans_search
+aa=AP
+
+[More Reports--AP--Vendor Balances]
+module=reports.pl
+action=vc_search
+vc=vendor
+
+[More Reports--AP--Vendor Activity]
+module=reports.pl
+action=vcactivity_search
+vc=vendor
+
+[More Reports--Goods & Services]
+
+[More Reports--Goods & Services--Stock Assembly]
+module=reports.pl
+action=build_search
+
+[More Reports--System]
+
+[More Reports--System--Audit Trail]
+module=reports.pl
+action=audit_search
+
+
