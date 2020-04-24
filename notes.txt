@@ -70,9 +70,14 @@ iterate following numbered steps: per bin/mozilla/*.pl file and components.
      plural = show many, select one, or batch select many to process, sort etc.
      Use qfo_sp_table_g2 to build table reports.
      Use qal_3g and friends to build UI pages.
- 3. Abstract all business processes into procs for package-biz-procs.tcl etc.
+3.  Abstract form definitions into package-defaults.tcl file alongside
+     procs that provide default values. The form definitions should
+     build on the default proc default values, and use parameters
+     to maybe refer to custom procs that provide default values
+     for example for customer number, invoice number etc.
+4.  Abstract all business processes into procs for package-biz-procs.tcl etc.
     This will also be useful for regression testing in tcl/test
- 4. Link the parts together and test.
+ 5. Link the parts together and test.
 
 
 These have 'query' in them:
