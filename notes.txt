@@ -25,6 +25,12 @@ db=customer
 db=vendor
 db=employee
 # subsequently, simplifying interpretation of $db, E.g. with ct
+# for all other menu driven parameter values, see: notes-menu-params.txt
+
+ct.pl  <-- builds forms.. review when drafting UI's
+ct.pl contains form html/defs for many vendor/customer forms,
+port those to accounts-contacts/lib/form-name.adp/tcl pairs like
+using templates in accounts-ledger/www/admin/test-*
 
 
 queries are built from SL/*.pm and bin/mozilla/*.pl. Check header of *.pl for
@@ -34,16 +40,6 @@ SL/Form.pm contains form building routines and other utilities, such as number
 formatting, locale translation etc.
 
 
-
-
-Use qfo_sp_table_g2 to build table reports.
-
-########Agenda:
-
-
-transpose/port dynamically generated SL queries to OpenACS xql files to be called by tcl. Use the package table definitions  verify with psql logs for literal queries. Avoid building dynamic sql queries for security reasons.
-transfer queries to .xql files as close to original as possible (ie use asterisk if there, then later, convert asterisks to explicit field names --to save time, to accelerate to alpha stage.
-
 Pages are built using ledger123/login.pl which
 calls ledger123/??.pl which
 loads SL/Form.pm and
@@ -51,6 +47,33 @@ calls bin/mozilla/??.pl which
 imports SL/??.pm
 
 See notes-priorities.txt for order of processing/porting..
+
+
+
+
+
+########Agenda:
+
+iterate following numbered steps: per bin/mozilla/*.pl file and components.
+
+1. Transpose/port dynamically generated SL queries to OpenACS xql files
+     to be called by tcl. Use the package table definitions.
+     Verify with psql logs for literal queries. 
+     Transfer queries to .xql files as close to original as possible
+     (ie use asterisk if there, then later, convert asterisks to
+     explicit field names --to save time, to accelerate to alpha stage.
+2. Create appropriate UI pages in oacs package equivalent to menu.ini
+     that uses the same bin/mozilla/*.pl file and components,
+     taking care to use the ported, revised database model, morphology etc.
+     Name the file and make functional using oacs object model standards.
+     singular = add one, show one, email, make some other based on it etc.
+     plural = show many, select one, or batch select many to process, sort etc.
+     Use qfo_sp_table_g2 to build table reports.
+     Use qal_3g and friends to build UI pages.
+ 3. Abstract all business processes into procs for package-biz-procs.tcl etc.
+    This will also be useful for regression testing in tcl/test
+ 4. Link the parts together and test.
+
 
 These have 'query' in them:
 bin/mozilla/reports.pl
@@ -77,19 +100,15 @@ SL/IC.pm
 SL/BP.pm
 SL/IM.pm
 SL/GL.pm
-SL/CT.pm
-SL/User.pm
+SL/CT.pm  [draft export done]  accounts-contacts
+SL/User.pm [mostly redundant to oacs user interface]
 SL/AM.pm
 SL/PE.pm
 SL/JC.pm
 SL/IR.pm
 SL/Trf.pm
-SL/Form.pm
+SL/Form.pm  [draft export done]  accounts-contacts
 
-ct.pl  <-- builds forms.. review when drafting UI's
-ct.pl contains form html/defs for many vendor/customer forms,
-port those to accounts-contacts/lib/form-name.adp/tcl pairs like
-using templates in accounts-ledger/www/admin/test-*
 
 
 review business logic in SL procs. port to appropriate packges in the port.
